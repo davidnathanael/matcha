@@ -1,5 +1,5 @@
-import express from 'express'
-import * as authController from '../controller/authController'
+import express from 'express';
+import * as authController from '../controller/authController';
 
 let router = express.Router();
 

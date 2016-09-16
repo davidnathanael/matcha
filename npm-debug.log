@@ -3,21 +3,21 @@
 1 verbose cli   '/usr/local/bin/npm',
 1 verbose cli   'run',
 1 verbose cli   'express-server' ]
-2 info using npm@3.10.3
-3 info using node@v6.3.1
+2 info using npm@3.10.7
+3 info using node@v6.4.0
 4 verbose run-script [ 'preexpress-server', 'express-server', 'postexpress-server' ]
 5 info lifecycle matcha@1.0.0~preexpress-server: matcha@1.0.0
 6 silly lifecycle matcha@1.0.0~preexpress-server: no script for preexpress-server, continuing
 7 info lifecycle matcha@1.0.0~express-server: matcha@1.0.0
 8 verbose lifecycle matcha@1.0.0~express-server: unsafe-perm in lifecycle true
-9 verbose lifecycle matcha@1.0.0~express-server: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/nfs/2015/d/ddela-cr/projects/new_matcha/node_modules/.bin:/usr/local/bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/nfs/2015/d/ddela-cr/projects/new_matcha/node_modules/.bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/nfs/2015/d/ddela-cr/.brew/bin:/nfs/2015/d/ddela-cr/Library/Python/2.7/bin:/nfs/2015/d/ddela-cr/bin/:/nfs/2015/d/ddela-cr/.rvm/bin:/usr/local/mysql-5.7.11-osx10.9-x86_64/bin:/nfs/2015/d/ddela-cr/bin:/nfs/2015/d/ddela-cr/.brew/bin:/nfs/2015/d/ddela-cr/.npm/bin:/nfs/2015/d/ddela-cr/goinfre/mongodb/bin
-10 verbose lifecycle matcha@1.0.0~express-server: CWD: /nfs/2015/d/ddela-cr/projects/new_matcha
+9 verbose lifecycle matcha@1.0.0~express-server: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/daviddelacruz/Dev/42/matcha/node_modules/.bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/daviddelacruz/Dev/42/matcha/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin
+10 verbose lifecycle matcha@1.0.0~express-server: CWD: /Users/daviddelacruz/Dev/42/matcha
 11 silly lifecycle matcha@1.0.0~express-server: Args: [ '-c', 'node ./server' ]
 12 silly lifecycle matcha@1.0.0~express-server: Returned: code: 1  signal: null
 13 info lifecycle matcha@1.0.0~express-server: Failed to exec express-server script
 14 verbose stack Error: matcha@1.0.0 express-server: `node ./server`
 14 verbose stack Exit status 1
-14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:242:16)
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
 14 verbose stack     at emitTwo (events.js:106:13)
 14 verbose stack     at EventEmitter.emit (events.js:191:7)
 14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:40:14)
@@ -26,11 +26,11 @@
 14 verbose stack     at maybeClose (internal/child_process.js:852:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
 15 verbose pkgid matcha@1.0.0
-16 verbose cwd /nfs/2015/d/ddela-cr/projects/new_matcha
+16 verbose cwd /Users/daviddelacruz/Dev/42/matcha
 17 error Darwin 15.6.0
 18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "express-server"
-19 error node v6.3.1
-20 error npm  v3.10.3
+19 error node v6.4.0
+20 error npm  v3.10.7
 21 error code ELIFECYCLE
 22 error matcha@1.0.0 express-server: `node ./server`
 22 error Exit status 1

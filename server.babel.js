@@ -9,6 +9,8 @@ import api_routes from './routes/api';
 
 const app = express();
 
+/*global __dirname process:true*/
+
 db.connect('mongodb://localhost:27017/matcha', (err) => {
 	if (err) {
 		console.log('Unable to connect to Mongo.');

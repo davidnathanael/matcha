@@ -1,31 +1,31 @@
-import mongodb from 'mongodb'
+import mongodb from 'mongodb';
 
 let state = {
 	db: null,
-}
+};
 
 const connect = (url, done) => {
-	if (state.db) return done()
+	if (state.db) return done();
 
 	mongodb.MongoClient.connect(url, (err, db) => {
-		if (err) return done(err)
-		state.db = db
-		done()
-	})
-}
+		if (err) return done(err);
+		state.db = db;
+		done();
+	});
+};
 
 const get = () => {
-	return state.db
-}
+	return state.db;
+};
 
 const close = (done) => {
 	if (state.db) {
-		state.db.close( (err, result) => {
-			state.db = null
-			state.mode = null
-			done(err)
-		})
+		state.db.close( (err) => {
+			state.db = null;
+			state.mode = null;
+			done(err);
+		});
 	}
-}
+};
 
-export {connect, get, close}
+export {connect, get, close};
