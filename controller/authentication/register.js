@@ -25,21 +25,42 @@ async function checkDuplicate (req) {
 	try {
 		docs = await collection.find({ $or: [{email: email}, {login: login}]}).toArray();
 	} catch (e) {
-		throw 'Unable to check database.';
+		throw {
+			status : 400,
+			msg : 'Unable to check database',
+		};
 	}
 	if (docs.length) {
-		let duplicate = '';
+		let duplicate = {
+			email : false,
+			login : false
+		};
 		if (docs[0].email == email || (docs[1] && docs[1].email == email))
-			duplicate = 'Email';
+			duplicate.email = true;
 		if (docs[0].login == login || (docs[1] && docs[1].login == login))
-			duplicate = (duplicate) ? 'Email and login ' : 'Login';
-		throw (duplicate + ' already used');
+			duplicate.login = true;
+		throw {
+			status : 409,
+			msg : 'Email/login already used',
+			duplicate : duplicate
+		};
 	}
 }
 
 function parse (req) {
 	if (!req.body.name || !req.body.surname || !req.body.login || !req.body.email || !req.body.password || !req.body.password_confirmation) {
-		throw 'Please fill all the fields.';
+		throw {
+			msg : 'Please fill all the fields.',
+			status : 422,
+			missing : {
+				name : (!req.body.name) ? true : false,
+				surname : (!req.body.surname) ? true : false,
+				login : (!req.body.login) ? true : false,
+				email : (!req.body.email) ? true : false,
+				password : (!req.body.password) ? true : false,
+				password_confirmation : (!req.body.password_confirmation) ? true : false
+			}
+		};
 	}
 }
 
