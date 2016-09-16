@@ -1,4 +1,5 @@
 import * as db from '../../db';
+import * as utils from '../utils';
 
 async function addToDatabase (req) {
 	try {
@@ -48,6 +49,19 @@ async function checkDuplicate (req) {
 }
 
 function parse (req) {
+	let error = {
+		msg : 'Incorrect values',
+		status : 406,
+		incorrect : [],
+		incorrect_fields : {
+			name : false,
+			surname : false,
+			login : false,
+			email : false,
+			password : false,
+			password_confirmation : false
+		}
+	};
 	if (!req.body.name || !req.body.surname || !req.body.login || !req.body.email || !req.body.password || !req.body.password_confirmation) {
 		throw {
 			msg : 'Please fill all the fields.',
@@ -62,6 +76,33 @@ function parse (req) {
 			}
 		};
 	}
+	if (!utils.isValidName(req.body.name)) {
+		error.incorrect_fields.name = true;
+		error.incorrect.push('Invalid name, allowed characters : letters and spaces');
+	}
+	if (!utils.isValidName(req.body.surname)) {
+		error.incorrect_fields.surname = true;
+		error.incorrect.push('Invalid surname, allowed characters : letters and spaces');
+	}
+	if (!utils.isValidLogin(req.body.login)) {
+		error.incorrect_fields.login = true;
+		error.incorrect.push('Invalid login, allowed : lowercase letters between 8 and 12 characters');
+	}
+	if (!utils.isValidEmail(req.body.email)) {
+		error.incorrect_fields.email = true;
+		error.incorrect.push('Invalid email, please enter a valid email address');
+	}
+	if (!utils.isValidPassword(req.body.password)) {
+		error.incorrect_fields.password = true;
+		error.incorrect.push('Invalid password, must 8 characters long and contain 1 uppercase letter, 1 lowercase letter and 1 number');
+	}
+	if (req.body.password !== req.body.password_confirmation) {
+		error.incorrect_fields.password_confirmation = true;
+		error.incorrect.push('Passwords do not match');
+	}
+	if (error.incorrect.length)
+		throw error;
+
 }
 
 const register = async (req, res) => {
