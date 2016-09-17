@@ -3,17 +3,30 @@ import * as utils from '../utils';
 
 async function addToDatabase (req) {
 	try {
-		const infos = req.body;
-
+		let infos = req.body;
+		let salt = utils.genRandomString(16);
 		await db.get().collection('users').insertOne({
-			'login': infos.login,
-			'name': infos.name,
-			'surname': infos.surname,
-			'email': infos.email,
-			'password': infos.password
+			name : infos.name.trim().toTitleCase(),
+			surname : infos.surname.trim().toUpperCase(),
+			login : infos.login.trim(),
+			email : infos.email,
+			password : utils.hashPassword(req.body.password, salt),
+			passwordSalt : salt,
+			age : 18,
+			sexe : '',
+			orientation : '',
+			geolocation : '',
+			tags : [],
+			winks : [],
+			winkedBy : [],
+			profilePicture : -1,
+			pictures : []
 		});
 	} catch (e) {
-		throw 'Unable to insert to database on registration';
+		throw {
+			status : 400,
+			msg: 'Unable to insert to database on registration'
+		}
 	}
 }
 

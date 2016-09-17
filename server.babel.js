@@ -3,6 +3,7 @@ import * as db from './db';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import path from 'path';
+import logger from 'morgan';
 
 import index_routes from './routes/index';
 import api_routes from './routes/api';
@@ -20,7 +21,7 @@ db.connect('mongodb://localhost:27017/matcha', (err) => {
 	}
 });
 
-// app.use(logger('dev'));
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());

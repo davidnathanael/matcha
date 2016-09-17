@@ -27,7 +27,9 @@
     "eslint-plugin-fp": "^2.2.0",
     "eslint-plugin-import": "^1.15.0",
     "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9",
     "mongodb": "^2.2.10",
+    "morgan": "^1.7.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "webpack": "^1.13.2"
